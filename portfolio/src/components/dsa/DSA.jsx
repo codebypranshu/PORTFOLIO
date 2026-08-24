@@ -1,21 +1,39 @@
 import { useEffect, useState } from "react";
 import DSACard from "./DSACard";
-import { fetchCodeforcesStats } from "../../controllers/dsaController";
+
+import {
+  fetchCodeforcesStats,
+  fetchLeetCodeStats,
+} from "../../controllers/dsaController";
 
 const DSA = () => {
+  const [leetcode, setLeetcode] = useState(null);
   const [codeforces, setCodeforces] = useState(null);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
     const loadStats = async () => {
       try {
-        const data = await fetchCodeforcesStats("Beetle727");
+        setLoading(true);
+        setError("");
 
-        setCodeforces(data);
+        const [leetcodeData, codeforcesData] =
+          await Promise.all([
+            fetchLeetCodeStats("Bluebeetle727"),
+            fetchCodeforcesStats("Beetle727"),
+          ]);
+
+        setLeetcode(leetcodeData);
+        setCodeforces(codeforcesData);
+
       } catch (err) {
-        console.error(err);
-        setError("Unable to load Codeforces statistics.");
+        console.error("DSA Stats Error:", err);
+
+        setError(
+          "Unable to load DSA statistics."
+        );
       } finally {
         setLoading(false);
       }
@@ -23,17 +41,6 @@ const DSA = () => {
 
     loadStats();
   }, []);
-
-  const leetcode = {
-    platform: "LeetCode",
-    username: "Bluebeetle727",
-
-    // Your current stats
-    rating: 1623,
-    problems: "110+",
-
-    link: "https://leetcode.com/u/Bluebeetle727/",
-  };
 
   return (
     <section
@@ -54,8 +61,8 @@ const DSA = () => {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl leading-7 text-gray-400">
-            My problem-solving journey across competitive programming
-            platforms.
+            My problem-solving journey across competitive
+            programming platforms.
           </p>
 
         </div>
@@ -63,18 +70,22 @@ const DSA = () => {
         {/* Loading */}
         {loading && (
           <div className="flex justify-center">
+
             <div className="rounded-xl border border-white/10 bg-white/5 px-6 py-4 text-gray-400">
-              Loading Codeforces statistics...
+              Loading DSA statistics...
             </div>
+
           </div>
         )}
 
         {/* Error */}
-        {error && (
+        {!loading && error && (
           <div className="flex justify-center">
+
             <div className="rounded-xl border border-red-400/20 bg-red-400/5 px-6 py-4 text-red-400">
               {error}
             </div>
+
           </div>
         )}
 
@@ -82,10 +93,10 @@ const DSA = () => {
         {!loading && !error && (
           <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
 
-            {/* LeetCode */}
-            <DSACard profile={leetcode} />
+            {leetcode && (
+              <DSACard profile={leetcode} />
+            )}
 
-            {/* Codeforces */}
             {codeforces && (
               <DSACard profile={codeforces} />
             )}
