@@ -1,8 +1,5 @@
 import { FiExternalLink } from "react-icons/fi";
-import {
-  SiCodeforces,
-  SiLeetcode,
-} from "react-icons/si";
+import { SiCodeforces, SiLeetcode } from "react-icons/si";
 
 const DSACard = ({ profile }) => {
   const isLeetCode = profile.platform === "LeetCode";
@@ -18,10 +15,7 @@ const DSACard = ({ profile }) => {
       <div className="flex items-center gap-4">
 
         <div className="rounded-xl bg-cyan-400/10 p-4">
-          <PlatformIcon
-            size={30}
-            className="text-cyan-400"
-          />
+          <PlatformIcon size={30} className="text-cyan-400" />
         </div>
 
         <div>
@@ -41,67 +35,40 @@ const DSACard = ({ profile }) => {
       {isLeetCode && (
         <div className="mt-7 grid grid-cols-2 gap-4">
 
-          {/* Max Rating */}
           <div className="rounded-xl border border-white/10 bg-black/20 p-4">
             <p className="text-sm text-gray-500">
-              Max Rating
+              Total Solved
             </p>
-
-            <p className="mt-2 text-2xl font-bold text-cyan-400">
-              {profile.rating}
-            </p>
-          </div>
-
-          {/* Problems */}
-          <div className="rounded-xl border border-white/10 bg-black/20 p-4">
-            <p className="text-sm text-gray-500">
-              Problems Solved
-            </p>
-
             <p className="mt-2 text-2xl font-bold text-cyan-400">
               {profile.problems}
             </p>
           </div>
 
-          {/* Global Rank */}
           <div className="rounded-xl border border-white/10 bg-black/20 p-4">
             <p className="text-sm text-gray-500">
               Global Rank
             </p>
-
             <p className="mt-2 text-xl font-bold text-cyan-400">
-              {profile.ranking || "—"}
+              {profile.ranking ?? "—"}
             </p>
           </div>
 
-          {/* Easy */}
           <div className="rounded-xl border border-white/10 bg-black/20 p-4">
-            <p className="text-sm text-gray-500">
-              Easy
-            </p>
-
+            <p className="text-sm text-gray-500">Easy</p>
             <p className="mt-2 text-xl font-bold text-green-400">
               {profile.easy || "—"}
             </p>
           </div>
 
-          {/* Medium */}
           <div className="rounded-xl border border-white/10 bg-black/20 p-4">
-            <p className="text-sm text-gray-500">
-              Medium
-            </p>
-
+            <p className="text-sm text-gray-500">Medium</p>
             <p className="mt-2 text-xl font-bold text-yellow-400">
               {profile.medium || "—"}
             </p>
           </div>
 
-          {/* Hard */}
-          <div className="rounded-xl border border-white/10 bg-black/20 p-4">
-            <p className="text-sm text-gray-500">
-              Hard
-            </p>
-
+          <div className="rounded-xl border border-white/10 bg-black/20 p-4 col-span-2">
+            <p className="text-sm text-gray-500">Hard</p>
             <p className="mt-2 text-xl font-bold text-red-400">
               {profile.hard || "—"}
             </p>
@@ -115,59 +82,51 @@ const DSACard = ({ profile }) => {
       {!isLeetCode && (
         <div className="mt-7 grid grid-cols-2 gap-4">
 
-          {/* Current Rating */}
           <div className="rounded-xl border border-white/10 bg-black/20 p-4">
             <p className="text-sm text-gray-500">
               Current Rating
             </p>
-
             <p className="mt-2 text-2xl font-bold text-cyan-400">
               {profile.rating}
             </p>
           </div>
 
-          {/* Max Rating */}
           <div className="rounded-xl border border-white/10 bg-black/20 p-4">
             <p className="text-sm text-gray-500">
               Max Rating
             </p>
-
             <p className="mt-2 text-2xl font-bold text-cyan-400">
               {profile.maxRating}
             </p>
           </div>
 
-          {/* Rank */}
           <div className="rounded-xl border border-white/10 bg-black/20 p-4">
             <p className="text-sm text-gray-500">
               Current Rank
             </p>
-
             <p className="mt-2 font-semibold capitalize text-gray-200">
               {profile.rank}
             </p>
           </div>
 
-          {/* Problems */}
           <div className="rounded-xl border border-white/10 bg-black/20 p-4">
             <p className="text-sm text-gray-500">
               Problems Solved
             </p>
-
             <p className="mt-2 text-2xl font-bold text-cyan-400">
-              {profile.problems}
+              {profile.problems || "—"}
             </p>
           </div>
 
         </div>
       )}
 
-      {/* Profile Link */}
+      {/* Link */}
       <a
         href={profile.link}
         target="_blank"
         rel="noreferrer"
-        className="mt-6 flex w-fit items-center gap-2 text-sm font-semibold text-gray-300 transition hover:text-cyan-400"
+        className="mt-6 flex w-fit items-center gap-2 text-sm font-semibold text-gray-300 hover:text-cyan-400"
       >
         Visit Profile
         <FiExternalLink size={16} />
