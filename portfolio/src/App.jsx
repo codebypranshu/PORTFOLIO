@@ -2,7 +2,7 @@ import Navbar from "./components/navbar/Navbar";
 import Hero from "./components/hero/Hero";
 import About from "./components/about/About";
 import Projects from "./components/projects/Projects";
-import DSA from "./components/dsa/DSA";
+import DsaTracker from "./components/dsa/DsaTracker";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 
@@ -17,7 +17,7 @@ function App() {
         <Hero />
         <About />
         <Projects />
-        <DSA />
+        <DsaTracker/>
         <Contact />
       </main>
 
