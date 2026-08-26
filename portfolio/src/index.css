@@ -23,3 +23,8 @@ a {
 button {
   font-family: inherit;
 }
+@media (max-width: 767px) {
+  .project-images-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

@@ -8,7 +8,10 @@ const Projects = () => {
       description:
         "A responsive weather application that provides real-time weather information with a clean and user-friendly interface.",
 
-      image: "/images/weather-app.png",
+      images: [
+        "/images/weather-app.png",
+        "/images/weather-app-2.png",
+      ],
 
       technologies: [
         "HTML",
@@ -18,10 +21,10 @@ const Projects = () => {
       ],
 
       github:
-        "https://github.com/codebypranshu",
+        "https://github.com/codebypranshu/weather-app",
 
       live:
-        "https://example.com",
+        "https://skycast-sandy.vercel.app/",
     },
 
     {
@@ -30,7 +33,10 @@ const Projects = () => {
       description:
         "A modern and responsive calculator designed to perform basic arithmetic operations with a clean and intuitive interface.",
 
-      image: "/images/calculator.png",
+      images: [
+        "/images/calculator.png",
+        "/images/calculator-2.png",
+      ],
 
       technologies: [
         "HTML",
@@ -40,24 +46,40 @@ const Projects = () => {
       ],
 
       github:
-        "https://github.com/codebypranshu",
+        "https://github.com/codebypranshu/calculator-app",
 
       live:
-        "https://example.com",
+        "https://modern-calculator-dun.vercel.app/",
     },
   ];
 
   return (
     <section
       id="projects"
-      className="px-6 py-24"
+      className="w-full"
+      style={{
+        padding:
+          "clamp(64px, 8vw, 96px) clamp(20px, 4vw, 64px)",
+      }}
     >
-      <div className="mx-auto max-w-7xl">
-
-        {/* Section Heading */}
-        <div className="mb-14 text-center">
-
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">
+      <div
+        className="mx-auto w-full"
+        style={{
+          maxWidth: "1440px",
+        }}
+      >
+        {/* =========================
+            SECTION HEADING
+        ========================== */}
+        <div
+          className="text-center"
+          style={{
+            marginBottom: "clamp(40px, 5vw, 56px)",
+          }}
+        >
+          <p
+            className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400"
+          >
             My Work
           </p>
 
@@ -65,25 +87,33 @@ const Projects = () => {
             Featured Projects
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl leading-7 text-gray-400">
+          <p
+            className="mx-auto max-w-2xl leading-7 text-gray-400"
+            style={{
+              marginTop: "16px",
+            }}
+          >
             A selection of projects I've built while exploring
             web development and improving my programming skills.
           </p>
-
         </div>
 
-        {/* Project Cards */}
-        <div className="grid gap-8 md:grid-cols-2">
-
+        {/* =========================
+            PROJECTS
+        ========================== */}
+        <div
+          className="flex flex-col"
+          style={{
+            gap: "clamp(32px, 5vw, 64px)",
+          }}
+        >
           {projects.map((project) => (
             <ProjectCard
               key={project.title}
               project={project}
             />
           ))}
-
         </div>
-
       </div>
     </section>
   );
